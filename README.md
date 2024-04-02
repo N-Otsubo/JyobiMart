@@ -1,2 +1,2 @@
-#  JyobiMart
-Djangoの授業で作成するサンプルアプリ「JyobiMart」になります。
+#  はじめに
+このリポジトリは、Djangoの授業で作成するサンプルアプリ「JyobiMart」になります。
