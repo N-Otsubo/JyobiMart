@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static "css/semantic.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/common.css" %}">
+
+    <title>JyobiMart</title>
+</head>
+<body style="height: 100%;">
+    <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+        <div style="margin-bottom: 100px;">
+            <div style="text-align: center;">
+                <a href="{% url "shop:index" %}">
+                    <img src="{% static "image/logo.png" %}" alt="ロゴ" width="200">
+                </a>
+            </div>
+            <div class="ui stackable" style="min-width: 500px;">
+                <div class="eleven wide column">
+                    <div class="ui segment">
+                        <div class="content">
+                            <form class="ui form" action="" method="POST">
+                                {% csrf_token %}
+                                {{form.as_p}}
+                                <button class="fluid ui secondary button" type="submit" style="margin-top: 30px;">ログイン</button>
+                            </form>
+                        </div>
+                    </div>
+                    <a class="ui item" href="{% url 'accounts:signup' %}">ユーザー登録</a>／
+                    <a class="ui item" href="{% url 'password_reset' %}">パスワードを忘れた場合</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static "js/semantic.min.js" %}"></script>
+    <script src="{% static "js/common.js" %}"></script>
+</body>
+</html>

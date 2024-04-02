@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+<div class="ui center aligned center fluid-container" style="padding:0px 5%;">
+  <div class="ui grid" style="margin-top: 50px;">
+    <div class="five wide column">
+      <img src="{{ product.image.url }}" style="width: 100%; height: auto; max-width: 400px; padding: 10px 0; margin: auto; display: block;">
+    </div>
+
+    <div class="eight wide column">
+      <h1 class="ui header" style="padding: 10px 0; border-bottom: 1px dotted #A9A9A9;">{{ product.name }}</h1>
+      <p>{{ product.description }}</p>
+    </div>
+
+    <div class="three wide column">
+      <div class="ui vertical menu" style="width: 100%;">
+        <div style="padding: 20px;">
+          <h2 class="ui right aligned header">価格　¥{{ product.price|floatformat:0|intcomma }}</h2>
+          {% if product.stock > 0 %}
+          <h4 class="ui header green">在庫あり</h4>
+          {% else %}
+          <h4 class="ui header column red">在庫なし</h4>
+          {% endif %}
+
+          <div>
+            <span>数量</span>
+            <select id="quantity">
+              {% for _ in "x"|rjust:product.stock %}
+              <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <a id="add_cart_link" href="#" class="fluid ui primary button" type="submit" style="margin-top: 50px;">カートに追加</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+  document.getElementById("add_cart_link").onclick = function() {
+    var selectedValue = document.getElementById("quantity").value;
+    var url = "{% url 'shop:add_to_cart' product_id=product.id %}?q=" + selectedValue;
+    this.href = url;
+  };
+</script>
+{% endblock extra_js %}
