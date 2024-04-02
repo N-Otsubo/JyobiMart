@@ -43,3 +43,5 @@ node_modules/
 
 # Ignore Django's secret key file (keep it secret, keep it safe!)
 *.key
+
+.DS_Store
