@@ -1,6 +1,7 @@
 from django.db import models
 from accounts.models import CustomUser
 
+
 # Create your models here.
 class Product(models.Model):
     class Meta:
@@ -17,6 +18,7 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+
 class Category(models.Model):
     class Meta:
         db_table = 'categories'
@@ -26,6 +28,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Order(models.Model):
     class Meta:

@@ -1,28 +1,33 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static "css/shop.css" %}">
+{% endblock extra_css %}
+
+{% block title %}検索結果{% endblock title %}
+
 {% block content %}
-<div class="ui container" style="padding: 30px 30px;">
-  <p style="padding:10px; border-radius: 10px;">
-    検索結果 {{ Product_list|length }} 件 <b style="padding-left: 15px; font-size: 18px">"{{ keyword }}"</b>
+<div class="ui container list" style="padding: 30px 30px;" id="product_search">
+  <p class="search-result">
+    検索結果 {{ Product_list|length }} 件 <b class="keyword">"{{ keyword }}"</b>
   </p>
 
   <div class="ui cards">
     {% for p in Product_list %}
-    <div class="card" style="max-width: 250px; max-height: 500px;">
+    <div class="card">
       <div class="image">
-        <img src="{{ p.image.url }}" style="width: auto; max-height: 330px; padding: 10px 0; margin: auto; display: block;">
+        <img src="{{ p.image.url }}" class="product-image">
       </div>
       <div class="content">
         <a class="header" href="{% url 'shop:product_detail' product_id=p.id %}">{{ p.name }}</a>
         <div class="meta">
-          <span class="date">{{ p.description|truncatechars:30 }}</span>
+          <span class="description">{{ p.description|truncatechars:30 }}</span>
         </div>
       </div>
       <div class="extra content">
         <span>
-          <i class="yen sign icon"></i>
-          {{ p.price|floatformat:0 }}
+          ¥ {{ p.price|floatformat:0 }}
         </span>
       </div>
     </div>
@@ -30,11 +35,3 @@
   </div>
 </div>
 {% endblock content %}
-
-{% block extra_js %}
-<script>
-  $('.special.cards .image').dimmer({
-    on: 'hover'
-  });
-</script>
-{% endblock extra_js %}

@@ -1,11 +1,14 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-# Create your models here.
+
 class CustomUser(AbstractUser):
     class Meta:
         db_table = 'custom_users'
 
+    email = models.EmailField(blank=False, null=False)
+    first_name = models.CharField(max_length=30, blank=False, null=False)
+    last_name = models.CharField(max_length=30, blank=False, null=False)
     post_code = models.CharField(max_length=10)
     address = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=15)

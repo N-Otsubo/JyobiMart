@@ -40,10 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django.contrib.humanize"
+    "django.contrib.humanize",
 ]
-
-NUMBER_GROUPING=3
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
