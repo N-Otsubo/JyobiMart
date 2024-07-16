@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset-UTF-8" />
+
+  <link rel="stylesheet" href="{% static 'css/semantic.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+
+  <link rel="shortcut icon" href="{% static "image/favicon.ico" %}"
+  type="image/x-icon">
+
+  <title>JyobiMart</title>
+</head>
+<body>
+  <div class="header">
+  </div>
+
+  {% block contents %}
+  {% endblock %}
+
+  <div class="footer">
+  </div>
+
+  <script src="{% static 'js/semantic.min.js' %}"></script>
+  {% block extra_js %}
+  {% endblock %}
+</body>
+</html>
