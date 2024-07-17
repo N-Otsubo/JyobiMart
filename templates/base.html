@@ -2,28 +2,93 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset-UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" href="{% static 'image/favicon.ico' %}" type="image/x-icon">
 
   <link rel="stylesheet" href="{% static 'css/semantic.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
-  <link rel="stylesheet" href="{% static 'css/shop.css' %}">
-
-  <link rel="shortcut icon" href="{% static "image/favicon.ico" %}"
-  type="image/x-icon">
 
   <title>JyobiMart</title>
 </head>
 <body>
-  <div class="header">
-  </div>
+  <header>
+    <div class="ui container">
+      <div class="ui secondary menu">
+        <div class="ui item">
+          <a href="{% url 'shop:index' %}">
+            <img src="{% static 'image/logo.png' %}" height="80">
+          </a>
+        </div>
+        <div class="right menu">
+          <div class="ui item">
+            <form id="searchForm" class="ui action input" action="#" method="get">
+              <select name="c" class="ui compact selection dropdown">
+                <option selected="" value="0">すべてのカテゴリー</option>
+                {% for category in categories %}
+                  <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+              </select>
+              <div class="ui icon input">
+                <input type="text" name="k" placeholder="Search...">
+                <i id="searchIcon" class="search link icon"></i>
+              </div>
+            </form>
+          </div>
+
+          {% if request.user.is_authenticated %}
+          <a href="{% url 'account:user_logout' %}" class="ui item">ログアウト</a>
+          {% else %}
+          <a href="{% url 'account:user_login' %}" class="ui item">ログイン</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </header>
 
   {% block contents %}
   {% endblock %}
 
-  <div class="footer">
-  </div>
+  <footer class="ui inverted footer segment">
+    <div class="ui container">
+      <div class="ui inverted divided equal height grid">
+
+        <div class="four wide column">
+          <h4 class="ui inverted header">JyobiMartについて</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">採用情報</a>
+            <a href="#" class="item">JyobiMartについて</a>
+            <a href="#" class="item">プレスリリース</a>
+          </div>
+        </div>
+
+        <div class="four wide column">
+          <h4 class="ui inverted header">ヘルプ＆ガイド</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">カスタマーサービス</a>
+            <a href="#" class="item">配送について</a>
+            <a href="#" class="item">Q&A</a>
+          </div>
+        </div>
+
+        <div class="eight wide column">
+          <h4 class="ui inverted header">盛岡情報ビジネス＆デザイン専門学校</h4>
+          <p>このサイトは情報システム科2年生のDjangoの授業で制作しました。</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script src="{% static 'js/semantic.min.js' %}"></script>
+  <script>
+    $('.ui.dropdown').dropdown();
+    $(document).ready(function() {
+      $("#searchIcon").click(function() {
+        $("#searchForm").submit();
+      });
+    });
+  </script>
   {% block extra_js %}
   {% endblock %}
 </body>
