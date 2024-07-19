@@ -1,0 +1,44 @@
+/* index */
+#top {
+  padding: 30px;
+}
+
+#top .banner {
+  margin-bottom: 60px;
+}
+
+#top .banner img {
+  width: 100%;
+}
+
+#top .products {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #fefefe;
+}
+
+#top .card {
+  margin: 10px;
+  padding: 10px;
+}
+
+#top .products img {
+  width: 100%;
+  margin: 0 auto 10px auto;
+}
+
+#top .feature-products {
+  margin: 60px 0 0 0;
+  width: 100%;
+  background-color: #fefefe
+}
+
+#top .feature-products .column {
+  width: calc(100%/2);
+  height: auto;
+}
+
+#top .feature-products .column img {
+  width: 100px;
+  height: 100px;
+}

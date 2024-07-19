@@ -8,15 +8,39 @@
   <link rel="shortcut icon" href="{% static 'image/favicon.ico' %}" type="image/x-icon">
 
   <link rel="stylesheet" href="{% static 'css/semantic.min.css' %}">
-  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/account.css' %}">
 
   <title>JyobiMart</title>
 </head>
 <body>
-  <form action="{% url 'account:user_login' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">ログイン</button>
-  </form>
+  <div id="login">
+    <div>
+      <div class="logo-container">
+        <a href="{% url 'shop:index' %}">
+          <img src="{% static 'image/logo.png' %}" width="200">
+        </a>
+      </div>
+      <div class="ui stackable form-container">
+        <div class="eleven wide column">
+          <div class="ui segment">
+            <div class="content">
+              <form class="ui form" action="{% url 'account:user_login' %}" method="POST">
+                {% csrf_token %}
+                <div class="field">
+                  <label for="username">ユーザーID</label>
+                  <input type="text" name="username" id="username" required>
+                </div>
+                <div class="field">
+                  <label for="password">パスワード</label>
+                  <input type="password" name="password" id="password" required>
+                </div>
+                <button class="fluid ui primary button" type="submit">ログイン</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

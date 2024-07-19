@@ -49,6 +49,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "shop.middlewares.HeaderMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -121,6 +122,10 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = (
     [BASE_DIR / "static"]
 )
+
+# 画像のアップロード先
+MEDIA_URL = "/media/"
+MEDIA_ROOT = [BASE_DIR / 'media']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

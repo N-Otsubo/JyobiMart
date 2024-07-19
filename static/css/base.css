@@ -3,7 +3,13 @@
   margin: 0;
 }
 
+body {
+  background-color: #EFEFEF;
+}
+
 footer {
-  color: #FFF;
+  margin-top: 60px;
   padding: 70px;
+  background-color: #1B1C1D;
+  color: rgba(255, 255, 255, 0.9);
 }

@@ -10,8 +10,8 @@ class Category(models.Model):
         verbose_name_plural = 'カテゴリー'
 
     name = models.CharField(verbose_name='種別名', max_length=255)
-    create_at = models.DateTimeField(auto_now_add=True) # 登録日時
-    update_at = models.DateTimeField(auto_now=True) # 更新日時
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
