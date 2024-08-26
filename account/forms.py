@@ -1,4 +1,5 @@
 from django import forms
+from .models import CustomUser
 
 
 class LoginForm(forms.Form):
@@ -6,5 +7,18 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput, required=True)
 
 
-class SigninForm(forms.Form):
-    pass
+class SignupForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    class Meta:
+        model = CustomUser
+        fields = [
+            'username',
+            'password',
+            'email',
+            'first_name',
+            'last_name',
+            'post_code',
+            'address',
+            'phone_number'
+        ]
