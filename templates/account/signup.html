@@ -25,6 +25,7 @@
         <div class="eleven wide column">
             <div class="ui segment">
             <h2 class="ui header">サインアップ</h2>
+
             <div class="content">
                 <form class="ui form" action="" method="POST">
                 {% csrf_token %}
@@ -38,9 +39,14 @@
                     <input type="email" name="email" id="email">
                 </div>
 
-                <div class="required {% if errors.password %}error{% endif %} field">
-                    <label for="password">パスワード</label>
-                    <input type="password" name="password" id="password">
+                <div class="required {% if errors.password1 %}error{% endif %} field">
+                    <label for="password1">パスワード</label>
+                    <input type="password" name="password1" id="password1">
+                </div>
+
+                <div class="required {% if errors.password2 %}error{% endif %} field">
+                    <label for="password2">確認用パスワード</label>
+                    <input type="password" name="password2" id="password2">
                 </div>
 
                 <div class="required field">

@@ -26,7 +26,7 @@
         </div>
         <div class="right menu">
           <div class="ui item">
-            <form id="searchForm" class="ui action input" action="#" method="get">
+            <form id="searchForm" class="ui action input" action="{% url 'shop:product_search' %}" method="get">
               <select name="c" class="ui compact selection dropdown">
                 <option selected="" value="0">すべてのカテゴリー</option>
                 {% for category in request.categories %}
