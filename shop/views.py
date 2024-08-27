@@ -18,8 +18,7 @@ class ProductSearchView(View):
         if category_id == "0":
             product_list = Product.objects.filter(name__icontains=keyword)
         else:
-            product_list = Product.objects.filter(
-                category_id=category_id, name__icontains=keyword)
+            product_list = Product.objects.filter(category_id=category_id, name__icontains=keyword)
 
         print(product_list[0].image.url)
 
