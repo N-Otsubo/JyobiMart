@@ -52,7 +52,7 @@
             </div>
           </div>
 
-          <a href="#" class="ui item">
+          <a href="{% url 'shop:cart' %}" class="ui item">
             <i class="ui shopping cart icon"></i>
             {{ request.cart_count|default:0 }}
           </a>
